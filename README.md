@@ -1,4 +1,4 @@
-# Routiner
+# Routiner https://travis-ci.org/kevinchen96/Routiner.svg?branch=prod
 
 This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 4.2.2.
 
