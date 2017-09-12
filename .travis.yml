@@ -20,3 +20,32 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - g++-4.8
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
+    secret_access_key: $AWS_SECRET_KEY
+    local_dir: dpl_cd_upload
+    bucket: routiner-bucket
+    region: us-west-2
+    skip_cleanup: true
+    acl: public_read
+    detect_encoding: true
+    on:
+      repo: kevinchen96/Routiner
+      branch: prod
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: routiner-bucket
+    key: Routiner.zip
+    bundle_type: zip
+    application: Routiner
+    deployment_group: Routiner
+    region: us-west-2
+    on:
+      repo: kevinchen96/Routiner
+      branch: prod
+script:
+  - zip -r latest *
+  - mkdir -p dpl_cd_upload
+  - mv latest.zip dpl_cd_upload/latest.zip
