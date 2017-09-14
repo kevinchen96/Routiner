@@ -3,6 +3,7 @@
 
 import path from 'path';
 import _ from 'lodash';
+require('dotenv').config();
 
 /*function requiredProcessEnv(name) {
   if(!process.env[name]) {
