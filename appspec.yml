@@ -3,3 +3,13 @@ os: linux
 files:
   - source: ./
     destination: /home/ec2-user/Routiner
+hooks:
+  AfterInstall:    
+    - location: bin/after_install.sh
+      runas: ec2-user
+  ApplicationStart:
+    - location: bin/app_start.sh
+      runas: ec2-user
+  ApplicationStop:
+    - location: bin/app_stop.sh
+      runas: ec2-user

@@ -1,3 +1,3 @@
 #!/bin/bash
 cd ~/Routiner
-gulp serve
+gulp serve:dist
